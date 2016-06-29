@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+
+
+      <h2>Edit Recipe</h2>
+      <form class="form-horizontal" ng-submit="vm.saveRecipe()">
+
+        <div class="form-group">
+          <label>Label: </label>
+          <input type="text" ng-model="vm.recipe.label" >
+        </div>
+        <div class="form-group">
+          <label>provider: </label>
+          <input type="text" ng-model="vm.recipe.provider">
+        </div>
+
+        <h3>Ingredient Lines:</h3>
+
+        <div ng-repeat="ingredientLines in vm.recipe.ingredientLines">
+          <div>{{ingredientLines.line}}</div>
+          <div>{{ingredientLines.slug}}</div>
+          <small><a class="text-danger" href="" ng-click="vm.deleteIngredientLines(ingredientLines, $index)">Delete</a>
+        </div>
+
+        <button type="submit">Save</button>
+      </form>
+
+
+    </div>
+  </div>
+</div>

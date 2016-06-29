@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="page-header">
+      </div>
+      <div class="comments-list" ng-repeat="recipe in main.recipes">
+        <div class="media">
+          <a class="media-left" href="#">
+            <img ng-src="{{recipe.image}}" width="82px">
+          </a>
+          <div class="media-body">
+
+            <h4 class="media-heading user_name">{{recipe.label}}</h4>
+            <p>Calories: {{recipe.calories}}</p>
+            <p>Yield: {{recipe.yield}}</p>
+            <p>Provider: {{recipe.provider}}</p>
+            <p><span ng-repeat="label in recipe.healthLabels">{{label}} | </span></p>
+
+            <p>
+              <small><a class="text-danger" href="" ng-click="main.delete(recipe._id)">Delete</a> -
+                <a ui-sref="details({id: recipe._id})">Edit</a></small>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
