@@ -18,9 +18,29 @@
         <h3>Ingredient Lines:</h3>
 
         <div ng-repeat="ingredientLines in vm.recipe.ingredientLines">
-          <div>{{ingredientLines.line}}</div>
-          <div>{{ingredientLines.slug}}</div>
-          <small><a class="text-danger" href="" ng-click="vm.deleteIngredientLines(ingredientLines, $index)">Delete</a>
+
+          <div ng-hide="vm.editForm[ingredientLines._id]">
+            <div>{{ingredientLines.line}}</div>
+            <div>{{ingredientLines.slug}}</div>
+            <small>
+              <a class="text-danger" href="" ng-click="vm.deleteIngredientLines(ingredientLines, $index)">Delete</a>
+              <a href="" ng-click="vm.editIngredientLines(ingredientLines, $index)">edit</a>
+            </small>
+          </div>
+
+          <div ng-show="vm.editForm[ingredientLines._id]">
+            <div class="form-group">
+              <label>Line: </label>
+              <input type="text" ng-model="ingredientLines.line" >
+            </div>
+            <div class="form-group">
+              <label>Slug: </label>
+              <input type="text" ng-model="ingredientLines.slug">
+            </div>
+            <small>
+              <a href="" ng-click="vm.saveIngredientLines(ingredientLines, $index)">save</a>
+            </small>
+          </div>
         </div>
 
         <button type="submit">Save</button>
